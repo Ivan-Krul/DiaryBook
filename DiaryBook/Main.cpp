@@ -9,8 +9,7 @@ using std::string;
 string INPUT;
 unsigned int Page::NPage = 0;
 
-int main()
-{
+int main() {
     Page page;
 
     cout << "Title: ";
@@ -22,8 +21,9 @@ int main()
     page.writeText(INPUT);
 
     cout << '\n';
-    cout << page.readTitle();
+    cout << page.readTitle() << ' ' << page.NumPage();
     cout << '\n';
     cout << page.readText();
     cout << '\n';
+    cout << page.DateCreated("hours") + 3 << ':' << page.DateCreated("minutes");
 }
