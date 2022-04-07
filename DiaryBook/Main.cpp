@@ -1,29 +1,31 @@
 ﻿#include <iostream>
 #include "Page.h"
+#include "Saver.h"
 
-using std::cout;
-using std::cin;
+using std::wcout;
+using std::wcin;
 using std::getline;
-using std::string;
+using std::wstring;
 
-string INPUT;
+wstring INPUT;
 unsigned int Page::NPage = 0;
 
 int main() {
     Page page;
-
-    cout << "Title: ";
-    getline(cin,INPUT);
+    wcout << "Title: ";
+    getline(wcin,INPUT);
     page.writeTitle(INPUT);
-
-    cout << "Text: ";
-    getline(cin, INPUT);
+    wcout << "Text: ";
+    getline(wcin, INPUT);
     page.writeText(INPUT);
 
-    cout << '\n';
-    cout << page.readTitle() << ' ' << page.NumPage();
-    cout << '\n';
-    cout << page.readText();
-    cout << '\n';
-    cout << page.DateCreated("hours") + 3 << ':' << page.DateCreated("minutes");
+    page.DateWrited(L"hours", 6);
+
+    wcout << '\n';
+    wcout << page.readTitle() << ' ' << page.NumPage();
+    wcout << '\n';
+    wcout << page.readText();
+    wcout << '\n';
+    wcout << page.DateWrited(L"hours") + 3 << ':' << page.DateWrited(L"minutes") << ':' << page.DateWrited(L"seconds") << ' ' << page.DateWrited(L"month days") << '.' << page.DateWrited(L"months") << '.' << page.DateWrited(L"years");
+
 }

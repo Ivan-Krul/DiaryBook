@@ -2,92 +2,80 @@
 #include <string>
 #include "Date.h"
 
-using std::string;
-using std::to_string;
+using std::wstring;
+using std::to_wstring;
 
 class Page 
 {
-	static unsigned int NPage;
+	typedef unsigned int npage_v;
+	typedef wstring title_v;
+	typedef wstring text_v;
 
-	string Title;
-	string Text;
+	static npage_v NPage;
 
-	Date DateCreation;
+	title_v Title;
+	text_v Text;
+
 	Date DateWrite;
 
 	//c in first word of name of varriable is constant varriable
-	unsigned int cNumPage;
+	npage_v cNumPage;
 public:
 	Page() {
 		cNumPage = NPage;
-		DateCreation.Now();
 		DateWrite.Now();
 		NPage++;
 	}
 
-	void writeTitle(string title) {
+	void writeTitle(title_v title) {
 		Title = title;
 	}
-	void writeText(string text) {
+	void writeText(text_v text) {
 		Text = text;
 	}
 	template<typename T>
 	void writeAdditionalText(T what) {
 		Text += to_string(what);
 	}
+	void writeAdditionalText(text_v text) {
+		Text += text;
+	}
 
-	string readTitle() {
+	title_v readTitle() {
 		return Title;
 	}
-	string readText() {
+	text_v readText() {
 		return Text;
 	}
-	unsigned int CountPages() {
+	npage_v CountPages() {
 		return NPage;
 	}
-	unsigned int NumPage() {
+	npage_v NumPage() {
 		return cNumPage;
 	}
-	int DateCreated(string what) {
-		Date& DT = DateCreation;
 
-		if ("seconds" == what) { return DT.Seconds(); }
-		else if ("minutes" == what) { return DT.Minutes(); }
-		else if ("hours" == what) { return DT.Hours(); }
-		else if ("month days" == what) { return DT.MonthDay(); }
-		else if ("months" == what) { return DT.Month(); }
-		else if ("years" == what) { return DT.Year(); }
-		else if ("week days" == what) { return DT.WeekDay(); }
-		else if ("year days" == what) { return DT.YearDay(); }
-		else if ("day ligth hours" == what) { return DT.DayLightHours(); }
+	int DateWrited(wstring what) {
+		if (L"seconds" == what) { return DateWrite.Seconds(); }
+		else if (L"minutes" == what) { return DateWrite.Minutes(); }
+		else if (L"hours" == what) { return DateWrite.Hours(); }
+		else if (L"month days" == what) { return DateWrite.MonthDay(); }
+		else if (L"months" == what) { return DateWrite.Month(); }
+		else if (L"years" == what) { return DateWrite.Year(); }
+		else if (L"week days" == what) { return DateWrite.WeekDay(); }
+		else if (L"year days" == what) { return DateWrite.YearDay(); }
+		else if (L"day ligth hours" == what) { return DateWrite.DayLightHours(); }
 	}
 
-	int DateWrited(string what) {
-		Date& DT = DateWrite;
-
-		if ("seconds") { return DT.Seconds(); }
-		else if ("minutes" == what) { return DT.Minutes(); }
-		else if ("hours" == what) { return DT.Hours(); }
-		else if ("month days" == what) { return DT.MonthDay(); }
-		else if ("months" == what) { return DT.Month(); }
-		else if ("years" == what) { return DT.Year(); }
-		else if ("week days" == what) { return DT.WeekDay(); }
-		else if ("year days" == what) { return DT.YearDay(); }
-		else if ("day ligth hours" == what) { return DT.DayLightHours(); }
-	}
-
-	void DateWrited(string what,int wha) {
-		Date& DT = DateWrite;
-
-		if ("seconds" == what) { DT.Seconds(wha); }
-		else if ("minutes" == what) { DT.Minutes(wha); }
-		else if ("hours" == what) { DT.Hours(wha); }
-		else if ("month days" == what) { DT.MonthDay(wha); }
-		else if ("months" == what) { DT.Month(wha); }
-		else if ("years" == what) { DT.Year(wha); }
-		else if ("week days" == what) { DT.WeekDay(wha); }
-		else if ("year days" == what) { DT.YearDay(wha); }
-		else if ("day ligth hours" == what) { DT.DayLightHours(wha); }
+	void DateWrited(wstring what,int wha) {
+		if (L"seconds" == what) { DateWrite.Seconds(wha); }
+		else if (L"minutes" == what) { DateWrite.Minutes(wha); }
+		else if (L"hours" == what) { DateWrite.Hours(wha); }
+		else if (L"month days" == what) { DateWrite.MonthDay(wha); }
+		else if (L"months" == what) { DateWrite.Month(wha); }
+		else if (L"years" == what) { DateWrite.Year(wha); }
+		else if (L"week days" == what) { DateWrite.WeekDay(wha); }
+		else if (L"year days" == what) { DateWrite.YearDay(wha); }
+		else if (L"day ligth hours" == what) { DateWrite.DayLightHours(wha); }
 	}
 
 	~Page() {
