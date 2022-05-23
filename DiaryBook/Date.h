@@ -1,6 +1,9 @@
 #pragma once
 #include <chrono>
 #include <time.h>
+#include <string>
+
+using std::wstring;
 
 class Date
 {
@@ -35,6 +38,18 @@ public:
 	int WeekDay() { return DateTime->tm_wday; }
 	int YearDay() { return DateTime->tm_yday; }
 	int DayLightHours() { return DateTime->tm_isdst; }
+
+	wstring Week() {
+		switch (WeekDay()) {
+			case 0: return L"Mon";
+			case 1: return L"Tue";
+			case 2: return L"Wed";
+			case 3: return L"Thu";
+			case 4: return L"Fri";
+			case 5: return L"Sat";
+			case 6: return L"Sun";
+		}
+	}
 
 	~Date() {
 	}

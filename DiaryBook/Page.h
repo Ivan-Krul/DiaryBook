@@ -67,15 +67,26 @@ public:
 	}
 
 	void DateWrited(wstring what,int wha) {
-		if (L"seconds" == what) { DateWrite.Seconds(wha); }
-		else if (L"minutes" == what) { DateWrite.Minutes(wha); }
-		else if (L"hours" == what) { DateWrite.Hours(wha); }
-		else if (L"month days" == what) { DateWrite.MonthDay(wha); }
-		else if (L"months" == what) { DateWrite.Month(wha); }
-		else if (L"years" == what) { DateWrite.Year(wha); }
-		else if (L"week days" == what) { DateWrite.WeekDay(wha); }
-		else if (L"year days" == what) { DateWrite.YearDay(wha); }
-		else if (L"day ligth hours" == what) { DateWrite.DayLightHours(wha); }
+		if (L"seconds" == what)
+			DateWrite.Seconds(wha);
+		else if (L"minutes" == what)
+			DateWrite.Minutes(wha);
+		else if (L"hours" == what)
+			DateWrite.Hours(wha);
+		else if (L"month days" == what)
+			DateWrite.MonthDay(wha);
+		else if (L"months" == what)
+			DateWrite.Month(wha);
+		else if (L"years" == what)
+			DateWrite.Year(wha);
+		else if (L"week days" == what) 
+			DateWrite.WeekDay(wha);
+		else if (L"year days" == what)
+			DateWrite.YearDay(wha);
+		else if (L"day ligth hours" == what)
+			DateWrite.DayLightHours(wha);
+		else if (L"week" == what)
+			DateWrite.Week();
 	}
 
 	~Page() {
