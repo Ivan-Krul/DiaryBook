@@ -1,6 +1,7 @@
 ﻿#include <iostream>
 #include "Page.h"
 #include "Saver.h"
+#include <Windows.h>
 
 using std::wcout;
 using std::wcin;
@@ -8,17 +9,20 @@ using std::getline;
 using std::wstring;
 using std::to_wstring;
 
-wstring INPUT;
+wstring INPUTT;
 unsigned int Page::NPage = 0;
 
 int main() {
+    SetConsoleCP(1251);
+    SetConsoleOutputCP(1251);
     Page page;
+
     wcout << "Title: ";
-    getline(wcin, INPUT);
-    page.writeTitle(INPUT);
+    getline(wcin, INPUTT);
+    page.writeTitle(INPUTT);
     wcout << "Text: ";
-    getline(wcin, INPUT);
-    page.writeText(INPUT);
+    getline(wcin, INPUTT);
+    page.writeText(INPUTT);
 
     page.DateWrited(L"hours", 3);
 
@@ -35,7 +39,8 @@ int main() {
         << page.DateWrited(L"years");
 
     Saver saver;
-    std::wstring title = to_wstring(page.DateWrited(L"years")) + L'_';
+    std::wstring title = L"Diary/";
+    title += to_wstring(page.DateWrited(L"years")) + L'_';
     title += to_wstring(page.DateWrited(L"months")+1) + L'_';
     title += to_wstring(page.DateWrited(L"month days")) + L'_';
     title += to_wstring(page.DateWrited(L"hours")) + L'_';
@@ -43,5 +48,6 @@ int main() {
     title += to_wstring(page.DateWrited(L"seconds"));
     
     saver.SaveHTML(page, title);
+    system("pause");
     return 0;
 }

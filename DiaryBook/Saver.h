@@ -13,7 +13,7 @@ public:
 		wofstream file;
 		file.open(directive + L".html");
 
-		file << "<!DOCTYPE html><html><head><meta charset = \"utf-8\"><meta name = \"viewport\" content = \"width=device-width, initial-scale=1\"><title>\n";
+		file << "<!DOCTYPE html><html><head><meta charset = \"ansi\"><meta name = \"viewport\" content = \"width=device-width, initial-scale=1\"><title>\n";
 		file << "Diary " << page.readTitle();
 		file << "\n</title></head><body><h2>\n"
 			<< page.NumPage() <<
